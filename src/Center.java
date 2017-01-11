@@ -16,9 +16,9 @@ public class Center extends JPanel {
 	private String line; //line in graph.in
 	private String[] arr;//contains numbers from the line, split by ", "
 	private int[] temp; //Integer version of arr
-	private Integer[][] wam;//weighted adjacency matrix
+	private static Integer[][] wam;//weighted adjacency matrix
 	private Object[][] whammy;
-	private Integer[] colNames; //same as row names
+	private Integer[] colNames;
 	private Object[] columnNames;
 	private int nodeNum = 0; //number of nodes there are, according to graph.in
 	
@@ -111,6 +111,10 @@ public class Center extends JPanel {
 	
 	public int getValidNodes() {
 		return nodeNum;
+	}
+	
+	public static Integer[][] getWam(){
+		return wam;
 	}
 	
 }

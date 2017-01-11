@@ -8,6 +8,7 @@ public class Sidebar extends JPanel{
 	private JButton dfs;
 	private JButton dijkstra;
 	private int endNode;
+	private Dfs dfs_mismo;
 	
 	public Sidebar() {
 		super();
@@ -19,6 +20,7 @@ public class Sidebar extends JPanel{
 		bfs = new JButton("BFS");
 		dfs = new JButton("DFS");
 		dijkstra = new JButton("Dijkstra's");
+		dfs_mismo = new Dfs();
 		/*
 		ActionListener askUserInput = new ActionListener() {
 			@Override
@@ -38,5 +40,13 @@ public class Sidebar extends JPanel{
 	
 	public JButton getDijkstraButton() {
 		return dijkstra;
+	}
+	
+	public JButton getDFSButton() {
+		return dfs;
+	}
+	
+	public JButton getBFSButton() {
+		return bfs;
 	}
 }

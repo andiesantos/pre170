@@ -7,11 +7,13 @@ public class Main {
 		JFrame frame = new JFrame("Java Review Exer");
 		Container container = frame.getContentPane();
 		JPanel mainPanel = new JPanel(new BorderLayout());
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(800, 600));
 		
-		Sidebar east = new Sidebar();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setPreferredSize(new Dimension(700, 500));
+		
 		Center center = new Center();
+		Sidebar east = new Sidebar();
+		
 		mainPanel.add(east, BorderLayout.LINE_END);
 		mainPanel.add(center, BorderLayout.CENTER);
 		
@@ -20,6 +22,8 @@ public class Main {
 		frame.pack();
 		frame.setVisible(true);
 		
+		//ACTION LISTENERS FOR BUTTONS IN SIDE PANEL
+		//Dijkstra's Algo: ask for user input for end node (default start node: 0)
 		ActionListener askUserInput = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -37,6 +41,17 @@ public class Main {
 				
 			}
 		};
+		
+		//BFS and DFS: show the graph traversal in a popup
+		ActionListener showDFS = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frame, Dfs.getTraversal());
+			}
+		};
+		
 		east.getDijkstraButton().addActionListener(askUserInput);
+		east.getDFSButton().addActionListener(showDFS);
+
 	}
 }
