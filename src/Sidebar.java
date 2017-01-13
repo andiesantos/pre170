@@ -10,6 +10,7 @@ public class Sidebar extends JPanel{
 	private int endNode;
 	private Dfs dfs;
 	private Bfs bfs;
+	private Dijkstra dijkstra;
 	
 	public Sidebar() {
 		super();
@@ -23,6 +24,7 @@ public class Sidebar extends JPanel{
 		dijkstraButton = new JButton("Dijkstra's");
 		dfs = new Dfs();
 		bfs = new Bfs();
+		dijkstra = new Dijkstra();
 		/*
 		ActionListener askUserInput = new ActionListener() {
 			@Override
