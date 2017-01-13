@@ -11,7 +11,7 @@ public class Bfs {
 		startNode = 0;
 		visited = new ArrayList<Integer>();
 		queue = new ArrayList<Integer>();
-		traversal = "Depth-First Search traversal returned:\n";
+		traversal = "Breadth-First Search traversal returned:\n";
 		
 		getNodes();
 		doBFS(startNode);
