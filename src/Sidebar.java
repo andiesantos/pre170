@@ -4,11 +4,12 @@ import java.awt.event.*;
 
 public class Sidebar extends JPanel{
 	private JPanel mainPanel;
-	private JButton bfs;
-	private JButton dfs;
-	private JButton dijkstra;
+	private JButton bfsButton;
+	private JButton dfsButton;
+	private JButton dijkstraButton;
 	private int endNode;
-	private Dfs dfs_mismo;
+	private Dfs dfs;
+	private Bfs bfs;
 	
 	public Sidebar() {
 		super();
@@ -17,10 +18,11 @@ public class Sidebar extends JPanel{
 	
 	public JPanel setup() {
 		this.mainPanel = new JPanel(new GridLayout(3,1));
-		bfs = new JButton("BFS");
-		dfs = new JButton("DFS");
-		dijkstra = new JButton("Dijkstra's");
-		dfs_mismo = new Dfs();
+		bfsButton = new JButton("BFS");
+		dfsButton = new JButton("DFS");
+		dijkstraButton = new JButton("Dijkstra's");
+		dfs = new Dfs();
+		bfs = new Bfs();
 		/*
 		ActionListener askUserInput = new ActionListener() {
 			@Override
@@ -31,22 +33,22 @@ public class Sidebar extends JPanel{
 		};
 		dijkstra.addActionListener(askUserInput);
 		*/
-		mainPanel.add(bfs);
-		mainPanel.add(dfs);
-		mainPanel.add(dijkstra);
+		mainPanel.add(bfsButton);
+		mainPanel.add(dfsButton);
+		mainPanel.add(dijkstraButton);
 		
 		return mainPanel;
 	}
 	
 	public JButton getDijkstraButton() {
-		return dijkstra;
+		return dijkstraButton;
 	}
 	
 	public JButton getDFSButton() {
-		return dfs;
+		return dfsButton;
 	}
 	
 	public JButton getBFSButton() {
-		return bfs;
+		return bfsButton;
 	}
 }

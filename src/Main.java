@@ -50,8 +50,16 @@ public class Main {
 			}
 		};
 		
+		ActionListener showBFS = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frame, Bfs.getTraversal());
+			}
+		};
+		
 		east.getDijkstraButton().addActionListener(askUserInput);
 		east.getDFSButton().addActionListener(showDFS);
+		east.getBFSButton().addActionListener(showBFS);
 
 	}
 }
