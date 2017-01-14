@@ -1,12 +1,21 @@
+import javax.swing.JLabel;
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Dijkstra {
 	private Integer[][] nodes;
-	private int[][] weights;
+	private static int[][] weights;
 	private int startingNode;
+	private static int endNode;
 	private Integer inf;
+	private static String pathString;
+	private static ArrayList<Integer> path;
 	
 	public Dijkstra() {
 		startingNode = 0; //by default
 		inf = Integer.MAX_VALUE;
+		path = new ArrayList<Integer>();
+		pathString = "Dijkstra's algorithm returned this shortest path:\n";
 		
 		getNodes();
 		weights = new int[nodes.length][3];
@@ -20,6 +29,16 @@ public class Dijkstra {
 	
 	public void getNodes() {
 		nodes = Center.getWam();
+	}
+	
+	public static void setEndNode(int end) {
+		endNode = end;
+		System.out.println("End node in Dijkstra: " + endNode);
+		path = findPath(endNode, weights);
+		for (int i=0; i<path.size(); i++) {
+			System.out.print(path.get(i) + " ");
+		}
+		pathString = setPathString(path, pathString);
 	}
 	
 	public void setWeights(Integer inf, int s) {
@@ -69,5 +88,32 @@ public class Dijkstra {
             System.out.println("");
         }
         System.out.println("");
+	}
+	
+	public static ArrayList<Integer> findPath(int endNode, int[][] weights) {
+		ArrayList<Integer> path = new ArrayList<Integer>();
+		System.out.println("doing");
+		path.add(endNode);
+		while (weights[endNode][2] != -1) {
+			for (int i=0; i<weights.length; i++) {
+				if (weights[endNode][2] == i) {
+					endNode = i;
+					path.add(endNode);
+				}
+			}
+		}
+		Collections.reverse(path);
+		return path;
+	}
+	
+	public static String setPathString(ArrayList<Integer> path, String pathString) {
+		for (int i=0; i<path.size(); i++) {
+			pathString = pathString + path.get(i) + " ";
+		}
+		return pathString;
+	}
+	
+	public static String getPathString() {
+		return pathString;
 	}
 }
