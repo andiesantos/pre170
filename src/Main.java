@@ -21,24 +21,6 @@ public class Main {
 		
 		frame.pack();
 		frame.setVisible(true);
-		
-		//BFS and DFS: show the graph traversal in a popup
-		ActionListener showDFS = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(frame, Dfs.getTraversal());
-			}
-		};
-		
-		ActionListener showBFS = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(frame, Bfs.getTraversal());
-			}
-		};
-		
-		east.getDFSButton().addActionListener(showDFS);
-		east.getBFSButton().addActionListener(showBFS);
 
 	}
 }

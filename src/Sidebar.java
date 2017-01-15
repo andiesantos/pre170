@@ -7,7 +7,7 @@ public class Sidebar extends JPanel{
 	private JButton bfsButton;
 	private JButton dfsButton;
 	private JButton dijkstraButton;
-	private int endNode;
+	private String endNode;
 	private Dfs dfs;
 	private Bfs bfs;
 	private Dijkstra dijkstra;
@@ -19,7 +19,7 @@ public class Sidebar extends JPanel{
 	
 	public JPanel setup() {
 		this.mainPanel = new JPanel(new GridLayout(3,1));
-		endNode = 0;
+		endNode = "0";
 		bfsButton = new JButton("BFS");
 		dfsButton = new JButton("DFS");
 		dijkstraButton = new JButton("Dijkstra's");
@@ -31,19 +31,31 @@ public class Sidebar extends JPanel{
 		ActionListener askUserInput = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				endNode = Integer.parseInt(JOptionPane.showInputDialog("Input end node"));
-				//CHECKERS
-				if (endNode >= 0 && endNode < Center.getWam().length) {
-					System.out.println("End node: " + endNode);
-				} else {
-					System.out.println("Invalid!");
-				}
+				endNode = JOptionPane.showInputDialog("Input end node");
 				Dijkstra.setEndNode(endNode);
 				JOptionPane.showMessageDialog(mainPanel, Dijkstra.getPathString());
 			}
 		};
 		
+		//BFS and DFS: show the graph traversal in a popup
+		ActionListener showDFS = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(mainPanel, Dfs.getTraversal());
+			}
+		};
+		
+		ActionListener showBFS = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(mainPanel, Bfs.getTraversal());
+			}
+		};
+		
 		dijkstraButton.addActionListener(askUserInput);
+		dfsButton.addActionListener(showDFS);
+		bfsButton.addActionListener(showBFS);
+		
 		mainPanel.add(bfsButton);
 		mainPanel.add(dfsButton);
 		mainPanel.add(dijkstraButton);
