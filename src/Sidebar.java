@@ -18,6 +18,7 @@ public class Sidebar extends JPanel{
 	}
 	
 	public JPanel setup() {
+		//Set up the side bar
 		this.mainPanel = new JPanel(new GridLayout(3,1));
 		endNode = "0";
 		bfsButton = new JButton("BFS");

@@ -11,16 +11,16 @@ public class Center extends JPanel {
 	private JLabel tableLabel;
 	private JTable table;
 	private JScrollPane scrollpane;
-	private BufferedReader reader; //for getting the number of nodes
-	private BufferedReader reader2;//for getting the weights of the graph
-	private String line; //line in graph.in
-	private String[] arr;//contains numbers from the line, split by ", "
+	private BufferedReader reader; //For getting the number of nodes
+	private BufferedReader reader2;//For getting the weights of the graph
+	private String line; //Line read in graph.in
+	private String[] arr;//Contains numbers from the line, split by ", "
 	private int[] temp; //Integer version of arr
-	private static Integer[][] wam;//weighted adjacency matrix
-	private Object[][] whammy;
+	private static Integer[][] wam; //Weighted adjacency matrix
 	private Integer[] colNames;
+	private Object[][] whammy; //Object versions of "wam" and "colNames" for use in JTable
 	private Object[] columnNames;
-	private int nodeNum = 0; //number of nodes there are, according to graph.in
+	private int nodeNum = 0; //Number of nodes there are, according to graph.in
 	
 	public Center() {
 		super();
@@ -29,6 +29,7 @@ public class Center extends JPanel {
 	}
 	
 	public void getWAM() {
+		//File reading from graph.in
 		try {
 			reader = new BufferedReader(new FileReader("graph.in"));
             System.out.println("Getting number of nodes...");
@@ -44,7 +45,7 @@ public class Center extends JPanel {
 
             System.out.println("Number of nodes: " + nodeNum);
             wam = new Integer[nodeNum][nodeNum];
-            //initialize values to 0
+            //Initialize values to 0
             for (int i=0; i<nodeNum; i++) {
             	for(int j=0; j<nodeNum; j++) {
             		wam[i][j] = 0;
@@ -62,7 +63,7 @@ public class Center extends JPanel {
                     for (int i=0; i<arr.length; i++) {
                         temp[i] = Integer.parseInt(arr[i]);
                     }
-                    //assignment to weighted adjacency matrix
+                    //Assignment to weighted adjacency matrix
                     wam[temp[0]][temp[1]] = temp[2];
                     wam[temp[1]][temp[0]] = temp[2];
                 }
@@ -79,7 +80,7 @@ public class Center extends JPanel {
 	public JPanel setupElements() {
 		mainPanel = new JPanel(new BorderLayout());
 		tableLabel = new JLabel("Weighted Adjacency Matrix");
-		//set column and row names
+		//Set column names
 		colNames = new Integer[nodeNum];
 		for (int i=0; i<nodeNum; i++) {
 			colNames[i] = i;
@@ -87,7 +88,7 @@ public class Center extends JPanel {
 		columnNames = colNames;
 		whammy = wam;
 		
-		//COOL DOGS
+		//COOL DOGS - Prints the weighted adjacency matrix in the console
 		System.out.println("DATA:");
 		for (int i=0; i<whammy.length; i++) {
             for (int j=0; j<whammy[0].length; j++) {
@@ -101,7 +102,7 @@ public class Center extends JPanel {
 		}
 		System.out.println("");
 		
-		//set up JTable
+		//Set up JTable that contains the weighted adjacency matrix
 		table = new JTable(whammy, columnNames);
 		scrollpane = new JScrollPane(table);
 		mainPanel.add(tableLabel, BorderLayout.PAGE_START);
@@ -109,11 +110,11 @@ public class Center extends JPanel {
 		return mainPanel;
 	}
 	
-	public int getValidNodes() {
+	public int getValidNodes() { //Get number of nodes in the graph
 		return nodeNum;
 	}
 	
-	public static Integer[][] getWam(){
+	public static Integer[][] getWam(){ //Get weighted adjacency matrix
 		return wam;
 	}
 	

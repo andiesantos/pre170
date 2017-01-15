@@ -1,9 +1,15 @@
+/*
+ * SANTOS, ANDREA MARIE M.
+ * ALLIANCE OF COMPUTER SCIENCE STUDENTS
+ * PRE-CMSC170 REVIEW
+ */
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class Main {
 	public static void main(String[] args) {
+		//Set up the frame
 		JFrame frame = new JFrame("Java Review Exer");
 		Container container = frame.getContentPane();
 		JPanel mainPanel = new JPanel(new BorderLayout());
